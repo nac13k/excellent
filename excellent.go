@@ -27,7 +27,6 @@ func getSheet(index int) string {
 // SetHeaders TODO: Doc
 func setHeaders(headers *HeadersStruct, xlsx *excelize.File) {
 	index := 1
-	// fmt.Println("hoakksakas", xlsx.GetSheetName(1))
 	for k, v := range headers.Data {
 		index++
 		xlsx.NewSheet(index, k)
@@ -47,17 +46,13 @@ func setValues(values *ValuesStruct, xlsx *excelize.File) {
 				xlsx.SetCellValue(getSheet(index), getAxis(x, y+1), v)
 			}
 		}
-		setCellColor(getSheet(index), getAxis(0, 0), getAxis(len(matrix[0]), len(matrix)), xlsx)
+		setCellColor(getSheet(index), getAxis(0, 0), getAxis(len(matrix[0])-1, len(matrix)-1), xlsx)
 	}
 }
 
 func setCellColor(sheet, start, end string, xlsx *excelize.File) {
 	format := `{"table_style":"TableStyleMedium2", "show_first_column":true,"show_last_column":true,"show_row_stripes":true,"show_column_stripes":false}`
 	xlsx.AddTable(sheet, start, end, format)
-	// err := xlsx.AutoFilter(sheet, start, end, "")
-	// if err != nil {
-	// 	fmt.Println(err)
-	// }
 }
 
 func getActiveSheet(activeSheet int) int {
@@ -69,7 +64,7 @@ func getActiveSheet(activeSheet int) int {
 
 // SaveFile TODO: Doc
 func saveFile(name string, xlsx *excelize.File) (f string, e error) {
-	f = fmt.Sprintf("./files/%v.xlsx", name)
+	f = fmt.Sprintf("/Users/nac13k/Documents/bitlab/smart-track/reports/%v.xlsx", name)
 	e = xlsx.WriteTo(f)
 	return
 }

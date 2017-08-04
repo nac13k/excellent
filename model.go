@@ -11,20 +11,12 @@ type X struct {
 
 //HeadersStruct  TODO: Doc
 type HeadersStruct struct {
-	Data  map[string][]string `json:"data"`
-	Color string              `json:"color"`
+	Data map[string][]string `json:"data"`
 }
 
 // ValuesStruct TODO: Doc
 type ValuesStruct struct {
-	Data   map[string][][]interface{} `json:"data"`
-	Format ValuesFormatStruct         `json:"format"`
-}
-
-// ValuesFormatStruct TODO: Doc
-type ValuesFormatStruct struct {
-	Index  int               `json:"index"`
-	Colors map[string]string `json:"colors"`
+	Data map[string][][]interface{} `json:"data"`
 }
 
 // Unmarshal TODO: Doc
