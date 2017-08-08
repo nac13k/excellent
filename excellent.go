@@ -2,13 +2,48 @@ package excellent
 
 import (
 	"fmt"
+	"io"
+	"os"
 
 	"github.com/Luxurioust/excelize"
 )
 
 // New TODO: Doc
-func New() *excelize.File {
-	return excelize.CreateFile()
+func New(name, folder string) (xlsx *excelize.File, f string) {
+	f = fmt.Sprintf("%v/%v.xlsx", folder, name)
+	println(f)
+	err := copy("/Users/nac13k/Documents/bitlab/report_service/Book.xlsx", f)
+	println(err)
+	println("/Users/nac13k/Documents/bitlab/report_service/Book.xlsx")
+	xlsx, _ = excelize.OpenFile(f)
+	return
+}
+
+func copy(src, dest string) error {
+	srcFile, err := os.Open(src)
+
+	if err != nil {
+		return err
+	}
+
+	defer srcFile.Close()
+
+	destFile, err := os.Create(dest)
+
+	if err != nil {
+		return err
+	}
+
+	defer destFile.Close()
+
+	_, err = io.Copy(destFile, srcFile) // check first var for number of bytes copied
+
+	if err != nil {
+		return err
+	}
+
+	err = destFile.Sync()
+	return err
 }
 
 func toChar(i int) string {
@@ -63,8 +98,8 @@ func getActiveSheet(activeSheet int) int {
 }
 
 // SaveFile TODO: Doc
-func saveFile(name string, xlsx *excelize.File) (f string, e error) {
-	f = fmt.Sprintf("/Users/nac13k/Documents/bitlab/smart-track/reports/%v.xlsx", name)
+func saveFile(name, folder string, xlsx *excelize.File) (f string, e error) {
+	f = fmt.Sprintf("%v/%v.xlsx", folder, name)
 	e = xlsx.WriteTo(f)
 	return
 }

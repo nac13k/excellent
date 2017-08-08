@@ -25,11 +25,12 @@ func (x *X) Unmarshal(data []byte) error {
 }
 
 // ToXLSX TODO: Doc
-func (x *X) ToXLSX() (f string, e error) {
-	xlsx := New()
+func (x *X) ToXLSX(folder string) (f string, e error) {
+	xlsx, f := New(x.Name, folder)
 	setHeaders(&x.Headers, xlsx)
-	xlsx.DeleteSheet(xlsx.GetSheetName(1))
+	// xlsx.DeleteSheet(xlsx.GetSheetName(1))
 	setValues(&x.Values, xlsx)
-	f, e = saveFile(x.Name, xlsx)
+	e = xlsx.Save()
+	// f, e = saveFile(xlsx)
 	return
 }
