@@ -26,10 +26,14 @@ func getSheet(index int) string {
 
 // SetHeaders TODO: Doc
 func setHeaders(headers *HeadersStruct, xlsx *excelize.File) {
-	index := 1
+	index := 0
 	for k, v := range headers.Data {
 		index++
-		xlsx.NewSheet(index, k)
+		if index == 1 {
+			xlsx.SetSheetName("Sheet1", k)
+		} else {
+			xlsx.NewSheet(index, k)
+		}
 		xlsx.SetActiveSheet(index)
 		for i, d := range v {
 			xlsx.SetCellValue(getSheet(index), getAxis(i, 0), d)
@@ -38,7 +42,7 @@ func setHeaders(headers *HeadersStruct, xlsx *excelize.File) {
 }
 
 func setValues(values *ValuesStruct, xlsx *excelize.File) {
-	index := 1
+	index := 0
 	for _, matrix := range values.Data {
 		index++
 		for y, ary := range matrix {
@@ -63,8 +67,8 @@ func getActiveSheet(activeSheet int) int {
 }
 
 // SaveFile TODO: Doc
-func saveFile(name string, xlsx *excelize.File) (f string, e error) {
-	f = fmt.Sprintf("/Users/nac13k/Documents/bitlab/smart-track/reports/%v.xlsx", name)
+func saveFile(name, folder string, xlsx *excelize.File) (f string, e error) {
+	f = fmt.Sprintf("%v/%v.xlsx", folder, name)
 	e = xlsx.WriteTo(f)
 	return
 }
