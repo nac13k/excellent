@@ -12,6 +12,9 @@ func New() *excelize.File {
 }
 
 func toChar(i int) string {
+	if i/26 > 0 {
+		return string(rune('A'-1+i/26)) + string(rune('A'-1+i%26))
+	}
 	return string(rune('A' - 1 + i))
 }
 
