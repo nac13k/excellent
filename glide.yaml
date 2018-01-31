@@ -1,4 +1,4 @@
 package: excellent
 import:
 - package: github.com/Luxurioust/excelize
-  version: ^1.2.0
+  version: 1.1.0

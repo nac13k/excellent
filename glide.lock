@@ -1,6 +1,6 @@
-hash: 9c8060179fd0d5902099cdf05e30632e7f665165763057182eda563e98f74c5f
-updated: 2018-01-31T16:56:00.330437-06:00
+hash: b4469fd054e6565f71c6f6f1addf4c0d740faff710eea5ea87548ec133635a5f
+updated: 2018-01-31T17:04:04.528399-06:00
 imports:
 - name: github.com/Luxurioust/excelize
-  version: 6d634ca320acca28a84f25888a04c0861548d5ed
+  version: 1ec2661dda1ef16f58b2a3d614b11a2bcd0a2f2f
 testImports: []
