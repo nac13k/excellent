@@ -3,7 +3,7 @@ package excellent
 import (
 	"fmt"
 
-	excelize "github.com/Luxurioust/excelize"
+	"github.com/360EntSecGroup-Skylar/excelize"
 )
 
 // New TODO: Doc
