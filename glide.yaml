@@ -1,4 +1,4 @@
 package: excellent
 import:
-- package: github.com/Luxurioust/excelize
+- package: github.com/360EntSecGroup-Skylar/excelize
   version: 1.0.0

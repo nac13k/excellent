@@ -1,6 +1,6 @@
-hash: 371428c3db6d446e8153e14ee20aba0bd6d5723b0ace4c4ef1a98fc5b5cbd684
-updated: 2018-01-31T17:09:25.053304-06:00
+hash: 289cd56e3c5390e625377d160a19ca5fa9270a1317a16bc359cf3a0e6358749d
+updated: 2018-01-31T17:13:54.833423-06:00
 imports:
-- name: github.com/Luxurioust/excelize
+- name: github.com/360EntSecGroup-Skylar/excelize
   version: a8cf38ebd5537b678a3747cd246fd1c511c73331
 testImports: []
