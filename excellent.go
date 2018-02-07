@@ -8,7 +8,7 @@ import (
 
 // New TODO: Doc
 func New() *excelize.File {
-	return excelize.CreateFile()
+	return excelize.NewFile()
 }
 
 func toChar(i int) string {
