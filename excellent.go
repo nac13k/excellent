@@ -72,6 +72,6 @@ func getActiveSheet(activeSheet int) int {
 // SaveFile TODO: Doc
 func saveFile(name, folder string, xlsx *excelize.File) (f string, e error) {
 	f = fmt.Sprintf("%v/%v.xlsx", folder, name)
-	e = xlsx.WriteTo(f)
+	e = xlsx.SaveAs(f)
 	return
 }
