@@ -2,6 +2,10 @@ package excellent
 
 import (
 	"fmt"
+	"net/http"
+	"strconv"
+	"strings"
+	"time"
 
 	"github.com/360EntSecGroup-Skylar/excelize"
 )
@@ -67,6 +71,39 @@ func getActiveSheet(activeSheet int) int {
 		return 1
 	}
 	return activeSheet
+}
+
+func splitSelector(selector string) (string, string) err {
+	s := strings.Split(selector, ":")
+	return s[0], s[1]
+}
+
+// WIP TODO: weas
+// func addImageFromURL(url string) {
+// 	response, err := http.Get(url)
+
+// 	if err != null {
+// 		return err
+// 	}
+
+// 	defer response.Body.Close()
+// 	file, err := os.Create(fmt.Sprintf("/tmp/%v.%v", strconv.Itoa(time.Now().Unix()), "jpg"))
+
+// 	if err != nil {
+// 		return err
+// 	}
+
+// 	_, err = io.Copy(file, response.Body)
+// 	if err != nil {
+// 		return err
+// 	}
+// 	file.Close()
+// 	return err
+// }
+
+func addImageFromPath(selector, path string, xlsx *excelize.File) err {
+	sheet, cell := splitSelector(selector)
+	return xlsx.AddPicture(sheet, cell, path, "")
 }
 
 // SaveFile TODO: Doc
